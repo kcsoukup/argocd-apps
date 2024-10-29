@@ -1,0 +1,51 @@
+#
+#  Helm Chart: primary values.yaml
+#
+replicaCount: 2
+namespace: mushroomhead
+
+image:
+  repository: kcsoukup/python-docker
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  host:
+    name: python-docker.damage.inc
+    path: /
+    pathType: Prefix
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+volumes:
+- name: secret-volume
+  secret:
+    secretName: example-creds
+#     optional: false
+
+volumeMounts:
+- name: secret-volume
+  mountPath: "/etc/config/secrets"
+  readOnly: true
+
+secrets:
+  name: example-creds
+  username: dHJpc2t1bGw=
+  password: TF3MmUzcjR0NXk2
