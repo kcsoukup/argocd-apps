@@ -15,11 +15,12 @@ service:
   type: ClusterIP
   port: 80
   targetPort: 5000
-  annotations: {}
+  # annotations: {}
 
 ingress:
   className: nginx
   annotations:
+    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /
   host:
     name: python-docker.damage.inc
