@@ -16,3 +16,7 @@ spec:
         - values.yaml
   sources: []
   project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
