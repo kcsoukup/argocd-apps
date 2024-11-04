@@ -23,7 +23,7 @@ ingress:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /
   host:
-    name: night-stalker.damage.inc
+    name: night-stalkers.damage.inc
     path: /
     pathType: Prefix
 
