@@ -1,0 +1,55 @@
+#
+#  Helm Chart: primary values.yaml
+#
+replicaCount: 2
+namespace: pantera
+
+image:
+  repository: kcsoukup/python-docker
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+  annotations: {}
+
+ingress:
+  className: nginx
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  host:
+    name: slaughtered.damage.inc
+    path: /
+    pathType: Prefix
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+volumes: {}
+  # enabled: false
+# - name: secret-volume
+#   secret:
+#     secretName: example-creds
+# #     optional: false
+
+volumeMounts: {}
+  # enabled: false
+# - name: secret-volume
+#   mountPath: "/etc/config/secrets"
+#   readOnly: true
+
+secrets:
+  enable: false
+  # name: example-creds
+  # username: dHJpc2t1bGw=
+  # password: TF3MmUzcjR0NXk2
