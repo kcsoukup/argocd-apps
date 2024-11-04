@@ -1,0 +1,53 @@
+#
+#  Helm Chart: primary values.yaml
+#
+replicaCount: 2
+namespace: megadeth
+
+image:
+  repository: kcsoukup/python-docker
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+  annotations: {}
+
+ingress:
+  className: nginx
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  host:
+    name: night-stalker.damage.inc
+    path: /
+    pathType: Prefix
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+volumes:
+- name: secret-volume
+  secret:
+    secretName: hunters
+#     optional: false
+
+volumeMounts:
+- name: secret-volume
+  mountPath: "/etc/config/secrets"
+  readOnly: true
+
+secrets:
+  name: hunters
+  leader: dHJpc2t1bGwK
+  sniper: a3lsZQo=
+  seeker: bWFuZG8K
