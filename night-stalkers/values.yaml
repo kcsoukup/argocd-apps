@@ -47,6 +47,7 @@ volumeMounts:
   readOnly: true
 
 secrets:
+  enabled: true
   name: hunters
   leader: dHJpc2t1bGwK
   sniper: a3lsZQo=
