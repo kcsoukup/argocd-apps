@@ -48,8 +48,8 @@ volumeMounts:
 
 secrets:
   enable: true
+  name: hunters
   data:
-    name: hunters
     leader: dHJpc2t1bGwK
     sniper: a3lsZQo=
     seeker: bWFuZG8K
