@@ -2,7 +2,7 @@
 #  Helm Chart: primary values.yaml
 #
 replicaCount: 2
-namespace: mushroomhead
+namespace: whatpod
 
 image:
   repository: kcsoukup/python-docker
@@ -28,25 +28,28 @@ ingress:
     pathType: Prefix
 
 resources:
-  limits:
-    cpu: 200m
-    memory: 256Mi
   requests:
     cpu: 100m
     memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
 
-volumes:
-- name: secret-volume
-  secret:
-    secretName: example-creds
-#     optional: false
+volumes: {}
+  # enabled: false
+# - name: secret-volume
+#   secret:
+#     secretName: example-creds
+# #     optional: false
 
-volumeMounts:
-- name: secret-volume
-  mountPath: "/etc/config/secrets"
-  readOnly: true
+volumeMounts: {}
+  # enabled: false
+# - name: secret-volume
+#   mountPath: "/etc/config/secrets"
+#   readOnly: true
 
 secrets:
-  name: example-creds
-  username: dHJpc2t1bGw=
-  password: TF3MmUzcjR0NXk2
+  enable: false
+  # name: example-creds
+  # username: dHJpc2t1bGw=
+  # password: TF3MmUzcjR0NXk2

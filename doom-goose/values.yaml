@@ -35,18 +35,9 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-volumes:
-- name: secret-volume
-  secret:
-    secretName: heads
-#     optional: false
+volumes: {}
 
-volumeMounts:
-- name: secret-volume
-  mountPath: "/etc/config/secrets"
-  readOnly: true
+volumeMounts: {}
 
 secrets:
-  name: heads
-  guitars: RGF2ZSBGZWx0b24K
-  drums: U3RldmVuIEZlbHRvbgo=
+  enabled: false
