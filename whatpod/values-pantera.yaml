@@ -51,5 +51,6 @@ volumeMounts: {}
 secrets:
   enable: false
   # name: example-creds
-  # username: dHJpc2t1bGw=
-  # password: TF3MmUzcjR0NXk2
+  data:
+    username: dHJpc2t1bGw=
+    password: TF3MmUzcjR0NXk2

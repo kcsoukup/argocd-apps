@@ -41,3 +41,7 @@ volumeMounts: {}
 
 secrets:
   enabled: false
+  # name:
+  # data:
+  #   key1: value
+  #   key2: value
